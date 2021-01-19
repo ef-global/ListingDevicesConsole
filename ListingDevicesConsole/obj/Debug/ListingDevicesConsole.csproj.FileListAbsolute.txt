@@ -15,4 +15,3 @@ C:\Users\marck\source\repos\ListingDevicesConsole\ListingDevicesConsole\bin\Debu
 C:\Users\marck\source\repos\ListingDevicesConsole\ListingDevicesConsole\bin\Debug\Accord.Audio.DirectSound.xml
 C:\Users\marck\source\repos\ListingDevicesConsole\ListingDevicesConsole\bin\Debug\SharpDX.xml
 C:\Users\marck\source\repos\ListingDevicesConsole\ListingDevicesConsole\bin\Debug\SharpDX.DirectSound.xml
-C:\Users\marck\source\repos\ListingDevicesConsole\ListingDevicesConsole\obj\Debug\ListingDevicesConsole.csprojAssemblyReference.cache

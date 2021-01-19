@@ -29,7 +29,7 @@ namespace ListingDevicesConsole
             // Load audio devices and set the correct selected ones
             var inputDevices = new AudioDeviceCollection(AudioDeviceCategory.Capture);
             audioInputs = inputDevices
-                //.Where(IsSelectableDevice)
+                .Where(IsSelectableDevice)
                 .Select(device =>
                new StudioDevice
                {
@@ -39,7 +39,7 @@ namespace ListingDevicesConsole
 
             var outputDevices = new AudioDeviceCollection(AudioDeviceCategory.Output);
             audioOutputs = outputDevices
-                //.Where(IsSelectableDevice)
+                .Where(IsSelectableDevice)
                 .Select(device =>
                  new StudioDevice
                  {
@@ -71,5 +71,31 @@ namespace ListingDevicesConsole
             string _audioInputs = JsonConvert.SerializeObject(audioInputs, Formatting.Indented);
             File.WriteAllText("audioInputs.json", _audioInputs);
         }
+
+        private static bool IsSelectableDevice(AudioDeviceInfo device) {
+            string[] hidenAudioDeviceNames = { 
+              "VB-Audio VoiceMeeter",
+              "VB-Audio Virtual Cable",
+              "Primary Sound Device",
+              "Primary Sound Driver",
+              "Primary Sound Capture Driver"
+            };
+
+            List<string> hiddenAudioNames = new List<string>(hidenAudioDeviceNames);
+
+
+            return !string.IsNullOrEmpty(device.Description) &&
+                   !hiddenAudioNames.Any(x =>
+                       device.Description.Contains(x));
+        }
+
+        //private bool IsSelectableDevice(AudioDeviceInfo device)
+        //{
+        //    var hiddenAudioNames = _options.Value.HiddenAudioDeviceNames;
+
+        //    return !string.IsNullOrEmpty(device.Description) &&
+        //           !hiddenAudioNames.Any(x =>
+        //               device.Description.Contains(x, StringComparison.OrdinalIgnoreCase));
+        //}
     }
 }
